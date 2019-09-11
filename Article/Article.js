@@ -88,6 +88,82 @@ const data = [
   }
 ];
 
+data.push({
+  title: 'HEllo hello hello',
+  date: 'DEc.15, 2000',
+  firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+  hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+  Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+  
+  secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+  thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+
+})
+
+
+
+function createComponent (dataInfo) {
+  // create elements
+
+  let article = document.createElement('div');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let firstPara = document.createElement('p');
+  let secondPara = document.createElement('p');
+  let thirdPara = document.createElement('p');
+
+  let button = document.createElement('button');
+
+  // create structure
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstPara);
+  article.appendChild(secondPara);
+  article.appendChild(thirdPara);
+  article.appendChild(button);
+
+  // set content
+  title.textContent = dataInfo.title;
+  date.textContent = dataInfo.date;
+  firstPara.textContent = dataInfo.firstParagraph;
+  secondPara.textContent = dataInfo.secondParagraph;
+  thirdPara.textContent = dataInfo.thirdParagraph;
+
+
+  
+
+  //apply styles
+
+  article.classList.add('article');
+  title.classList.add('h2')
+  date.classList.add('date');
+  button.classList.add('expandButton')
+
+  // event listener
+
+  button.addEventListener('click', (e) => {
+    article.classList.toggle('article-open');
+  })
+
+
+  return article
+}
+
+const articles = document.querySelector('.articles');
+
+data.map(data => {
+  articles.appendChild(createComponent(data));
+})
+
+
+
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
   <div class="article">
