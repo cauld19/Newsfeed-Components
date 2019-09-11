@@ -135,6 +135,7 @@ function createComponent (dataInfo) {
   firstPara.textContent = dataInfo.firstParagraph;
   secondPara.textContent = dataInfo.secondParagraph;
   thirdPara.textContent = dataInfo.thirdParagraph;
+  button.textContent = '\u25bc'
 
 
   
@@ -150,6 +151,7 @@ function createComponent (dataInfo) {
 
   button.addEventListener('click', (e) => {
     article.classList.toggle('article-open');
+    button.textContent = '\u25b2';
   })
 
 
@@ -158,7 +160,7 @@ function createComponent (dataInfo) {
 
 const articles = document.querySelector('.articles');
 
-data.map(data => {
+data.forEach(data => {
   articles.appendChild(createComponent(data));
 })
 
